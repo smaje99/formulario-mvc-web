@@ -13,9 +13,139 @@
     </nav>
 
     <main class="main">
-        <section class="form">
-            <form action="" class="form__container">
+        <section class="register">
+            <form action="" class="form">
+                <label for="name" class="form__name">
+                    <span class="form__name--label">Nombre</span>
+                    <input
+                        type="text"
+                        name="name"
+                        id="name"
+                        required
+                        class="form__name--input">
+                </label>
 
+                <label for="alias" class="form__alias">
+                    <span class="form__alias--label">Alias</span>
+                    <input
+                        type="text"
+                        name="alias"
+                        id="alias"
+                        required
+                        class="form__alias--input">
+                </label>
+
+                <label for="password" class="form__password">
+                    <span class="form__password--label">Contraseña</span>
+                    <input
+                        type="password"
+                        name="password"
+                        id="password"
+                        required
+                        class="form__password--input">
+                </label>
+
+                <label for="birth" class="form__birth">
+                    <span class="form__birth--label">Fecha de cumpleaños</span>
+                    <input
+                        type="date"
+                        name="birth"
+                        id="birth"
+                        max="2021-12-01"
+                        required
+                        class="form__birth--input">
+                </label>
+
+                <label for="email" class="form__email">
+                    <span class="form__email--label">Correo electrónico</span>
+                    <input
+                        type="email"
+                        name="email"
+                        id="email"
+                        required
+                        class="form__email--input">
+                </label>
+
+                <label for="phone" class="form__phone">
+                    <span class="form__phone--label">Celular</span>
+                    <input
+                        type="tel"
+                        name="phone"
+                        id="phone"
+                        minlength="10"
+                        maxlength="10"
+                        pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}"
+                        required
+                        class="form__phone--input">
+                </label>
+
+                <label for="potential" class="form__potential">
+                    <span class="form__potential--label">Potencial</span>
+                    <input
+                        type="range"
+                        value="3"
+                        name="potential"
+                        id="potential"
+                        min="0"
+                        max="10"
+                        class="form__potential--input">
+                </label>
+
+                <fieldset class="form__sex">
+                    <legend class="form__sex--legend">Sexo</legend>
+
+                    <label for="masculino" class="form__sex--container">
+                        <span class="form__sex--label">Masculino</span>
+                        <input
+                            type="radio"
+                            value="masculino"
+                            name="sex"
+                            id="masculino"
+                            class="form__sex--input">
+                    </label>
+
+                    <label for="femenino" class="form__sex--container">
+                        <span class="form__sex--label">Femenino</span>
+                        <input
+                            type="radio"
+                            value="femenino"
+                            name="sex"
+                            id="femenino"
+                            class="form__sex--input">
+                    </label>
+                </fieldset>
+
+                <fieldset class="form__color">
+                    <legend class="form__color--legend">Color</legend>
+
+                    <label for="fore" class="form__color--container">
+                        <span class="form__color--label">Letra</span>
+                        <input
+                            type="color"
+                            name="fore"
+                            id="fore"
+                            class="form__color--input">
+                    </label>
+
+                    <label for="back" class="form__color--container">
+                        <span class="form__color--label">Fondo</span>
+                        <input
+                            type="color"
+                            value="#ffffff"
+                            name="back"
+                            id="back"
+                            class="form__color--input">
+                    </label>
+                </fieldset>
+
+                <input
+                    type="submit"
+                    value="Registrarme"
+                    aria-label="Control del formulario">
+                <input
+                    type="reset"
+                    value="Limpiar"
+                    aria-label="Limpiar formulario">
             </form>
         </section>
 
