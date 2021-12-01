@@ -22,3 +22,24 @@ html {
     font-size: 18pt;
     color: rgb(227, 229, 235);
 }
+
+.main {
+    display: grid;
+    gap: .8rem;
+    grid-template:
+        "register    search"    34%
+        "register    profile"   65% /
+        auto         auto;
+}
+
+.register {
+    grid-area: register;
+}
+
+.search {
+    grid-area: search;
+}
+
+.profile {
+    grid-area: profile;
+}
