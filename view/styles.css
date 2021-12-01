@@ -92,3 +92,7 @@ html {
     gap: 6rem;
     padding: .5rem;
 }
+
+.form--button {
+    padding: .35rem;
+}
