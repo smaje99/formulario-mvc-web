@@ -15,59 +15,59 @@
     <main class="main">
         <section class="register">
             <form action="" class="form">
-                <label for="name" class="form__name">
-                    <span class="form__name--label">Nombre</span>
+                <label for="name" class="form__field">
+                    <span class="form__field--label">Nombre</span>
                     <input
                         type="text"
                         name="name"
                         id="name"
                         required
-                        class="form__name--input">
+                        class="form__field--input">
                 </label>
 
-                <label for="alias" class="form__alias">
-                    <span class="form__alias--label">Alias</span>
+                <label for="alias" class="form__field">
+                    <span class="form__field--label">Alias</span>
                     <input
                         type="text"
                         name="alias"
                         id="alias"
                         required
-                        class="form__alias--input">
+                        class="form__field--input">
                 </label>
 
-                <label for="password" class="form__password">
-                    <span class="form__password--label">Contraseña</span>
+                <label for="password" class="form__field">
+                    <span class="form__field--label">Contraseña</span>
                     <input
                         type="password"
                         name="password"
                         id="password"
                         required
-                        class="form__password--input">
+                        class="form__field--input">
                 </label>
 
-                <label for="birth" class="form__birth">
-                    <span class="form__birth--label">Fecha de cumpleaños</span>
+                <label for="birth" class="form__field">
+                    <span class="form__field--label">Fecha de cumpleaños</span>
                     <input
                         type="date"
                         name="birth"
                         id="birth"
                         max="2021-12-01"
                         required
-                        class="form__birth--input">
+                        class="form__field--input">
                 </label>
 
-                <label for="email" class="form__email">
-                    <span class="form__email--label">Correo electrónico</span>
+                <label for="email" class="form__field">
+                    <span class="form__field--label">Correo electrónico</span>
                     <input
                         type="email"
                         name="email"
                         id="email"
                         required
-                        class="form__email--input">
+                        class="form__field--input">
                 </label>
 
-                <label for="phone" class="form__phone">
-                    <span class="form__phone--label">Celular</span>
+                <label for="phone" class="form__field">
+                    <span class="form__field--label">Celular</span>
                     <input
                         type="tel"
                         name="phone"
@@ -76,11 +76,11 @@
                         maxlength="10"
                         pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}"
                         required
-                        class="form__phone--input">
+                        class="form__field--input">
                 </label>
 
-                <label for="potential" class="form__potential">
-                    <span class="form__potential--label">Potencial</span>
+                <label for="potential" class="form__field">
+                    <span class="form__field--label">Potencial</span>
                     <input
                         type="range"
                         value="3"
@@ -91,44 +91,44 @@
                         class="form__potential--input">
                 </label>
 
-                <fieldset class="form__sex">
-                    <legend class="form__sex--legend">Sexo</legend>
+                <fieldset class="form__container">
+                    <legend class="form__container--legend">Sexo</legend>
 
-                    <label for="masculino" class="form__sex--container">
-                        <span class="form__sex--label">Masculino</span>
+                    <label for="masculino" class="form__field--container">
                         <input
                             type="radio"
                             value="masculino"
                             name="sex"
                             id="masculino"
-                            class="form__sex--input">
+                            class="form__field--input">
+                        <span class="form__field--label">Masculino</span>
                     </label>
 
-                    <label for="femenino" class="form__sex--container">
-                        <span class="form__sex--label">Femenino</span>
+                    <label for="femenino" class="form__field--container">
                         <input
                             type="radio"
                             value="femenino"
                             name="sex"
                             id="femenino"
                             class="form__sex--input">
+                        <span class="form__field--label">Femenino</span>
                     </label>
                 </fieldset>
 
-                <fieldset class="form__color">
-                    <legend class="form__color--legend">Color</legend>
+                <fieldset class="form__container">
+                    <legend class="form__container--legend">Color</legend>
 
-                    <label for="fore" class="form__color--container">
-                        <span class="form__color--label">Letra</span>
+                    <label for="fore" class="form__field--container">
+                        <span class="form__field--label">Letra</span>
                         <input
                             type="color"
                             name="fore"
                             id="fore"
-                            class="form__color--input">
+                            class="form__container--input">
                     </label>
 
-                    <label for="back" class="form__color--container">
-                        <span class="form__color--label">Fondo</span>
+                    <label for="back" class="form__field--container">
+                        <span class="form__field--label">Fondo</span>
                         <input
                             type="color"
                             value="#ffffff"
@@ -141,11 +141,15 @@
                 <input
                     type="submit"
                     value="Registrarme"
-                    aria-label="Control del formulario">
+                    id="submit"
+                    aria-label="Control del formulario"
+                    class="form--button">
                 <input
                     type="reset"
                     value="Limpiar"
-                    aria-label="Limpiar formulario">
+                    id="reset"
+                    aria-label="Limpiar formulario"
+                    class="form--button">
             </form>
         </section>
 
