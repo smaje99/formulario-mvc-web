@@ -12,7 +12,7 @@ Session = sessionmaker(bind=engine)
 Base = declarative_base()
 
 @contextmanager
-def session_readings():
+def session_reading():
     session = Session()
     try:
         yield session
