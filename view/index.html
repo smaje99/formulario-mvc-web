@@ -14,7 +14,7 @@
 
     <main class="main">
         <section class="register">
-            <form action="" class="form">
+            <form action="" id="register" class="form">
                 <label for="name" class="form__field">
                     <span class="form__field--label">Nombre</span>
                     <input
@@ -153,8 +153,35 @@
             </form>
         </section>
 
-        <section class="search">
+        <section class="login">
+            <form action="" id="login" class="form">
+                <label for="alias-login" class="form__field">
+                    <span class="form__field--label">Alias</span>
+                    <input
+                        type="text"
+                        name="alias"
+                        id="alias-login"
+                        required
+                        class="form__field--input">
+                </label>
 
+                <label for="password.login" class="form__field">
+                    <span class="form__field--label">Contraseña</span>
+                    <input
+                        type="password"
+                        name="password"
+                        id="password-login"
+                        required
+                        class="form__field--input">
+                </label>
+
+                <input
+                    type="submit"
+                    value="Iniciar Sesión"
+                    id="submit-login"
+                    aria-label="Control del formulario"
+                    class="form--button">
+            </form>
         </section>
 
         <section class="profile">
