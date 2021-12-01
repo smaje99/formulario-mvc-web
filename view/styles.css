@@ -1,3 +1,8 @@
+@font-face {
+    font-family: Roboto;
+    src: url('./assets/Roboto-Regular.ttf');
+}
+
 * {
     margin: 0;
     padding: 0;
@@ -5,6 +10,7 @@
 
 html {
     font-size: 62.5%;
+    font-family: Roboto;
 }
 
 .navbar {
@@ -67,7 +73,7 @@ html {
 .form__field--input,
 .form__container--legend,
 .form--button {
-    font-size: 12pt;
+    font-size: 11pt;
 }
 
 .form__field--input {
