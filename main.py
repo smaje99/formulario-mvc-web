@@ -1,42 +1,35 @@
-from fastapi import FastAPI, HTTPException, status
-from fastapi.staticfiles import StaticFiles
+from flask import Flask, request, jsonify
 
 from model import crud, User
 
 
-app = FastAPI()
+app = Flask(__name__, static_folder='view', static_url_path='')
 
 
-@app.get('/users/')
+@app.route('/users/', methods=['GET'])
 def get_users():
-    return crud.get_users()
+    return jsonify(crud.get_users())
 
 
-@app.get('/users/{alias}', response_model=User)
+@app.route('/users/<alias>', methods=['GET'])
 def get_user(alias: str):
-    try:
-        user = crud.get_user(alias)
-    except:
-        raise HTTPException(
-            status_code=status.HTTP_404_NOT_FOUND,
-            detail='El usuario no existe',
-            headers={ 'WWW-Authenticate': 'Basic' }
-        )
-    return user
+    return dict(crud.get_user(alias))
 
 
-@app.post('/users/', response_model=User)
-def create_user(user: User):
-    return crud.add_user(user)
+@app.route('/users/', methods=['POST'])
+def create_user():
+    return dict(crud.add_user(User(**request.json)))
 
 
-@app.put('/users/', response_model=User)
-def update_user(user: User):
-    return crud.update_user(user)
+@app.route('/users/', methods=['PUT'])
+def update_user():
+    return dict(crud.update_user(User(**request.json)))
 
 
-app.mount(
-    '/',
-    StaticFiles(directory='view', html=True),
-    name='static'
-)
+@app.route('/')
+def root():
+    return app.send_static_file('index.html')
+
+
+if __name__ == '__main__':
+    app.run()
