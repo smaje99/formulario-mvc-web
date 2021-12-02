@@ -8,6 +8,10 @@ data: List[User] = []
 id: int = 0
 
 
+def get_users() -> List[User]:
+    return data
+
+
 def get_user(alias: str) -> User:
     user = list(filter(
         lambda user: user.alias == alias, data))

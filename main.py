@@ -7,6 +7,11 @@ from model import crud, User
 app = FastAPI()
 
 
+@app.get('/users/')
+def get_users():
+    return crud.get_users()
+
+
 @app.get('/users/{alias}', response_model=User)
 def get_user(alias: str):
     try:
