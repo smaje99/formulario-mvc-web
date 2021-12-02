@@ -17,21 +17,26 @@ const getData = () => {
 
 const registerForm = $('#register');
 
-const createUser = async () => {
-    const user = await fetch('/users/', {
+registerForm.addEventListener('submit', e => {
+    e.preventDefault();
+    fetch('/users/', {
         method: 'POST',
-        body: getData(),
+        body: JSON.stringify(getData()),
         headers: {
             'Accept': 'application/json',
             'Content-Type': 'application/json'
         }
     })
+        .then(() => alert('Usuario Creado'))
+        .try(() => alert('Usuario no creado'));
+    e.target.reset();
+})
 
-    user.json()
-    return user;
-}
+const loginForm = $('#login');
 
-registerForm.addEventListener('submit', e => {
+loginForm.addEventListener('submit', e => {
     e.preventDefault();
-    console.table(createUser());
+    fetch(`/users/${$('#alias-login').value}`)
+        .then(data => data.json())
+        .then(console.log);
 })
