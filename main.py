@@ -15,12 +15,6 @@ Base.metadata.create_all(engine)
 
 app = FastAPI()
 
-app.mount(
-    '/',
-    StaticFiles(directory='view', html=True),
-    name='static'
-)
-
 
 @app.get('/users/{username}', response_model=User)
 def get_user(username: str, session: Session = Depends(session_reading)):
@@ -45,3 +39,10 @@ def create_user(user: User, session: Session = Depends(session_writing)):
 def update_user(user: User, session: Session = Depends(session_writing)):
     crud.update_user(session, user)
     return user
+
+
+app.mount(
+    '/',
+    StaticFiles(directory='view', html=True),
+    name='static'
+)
