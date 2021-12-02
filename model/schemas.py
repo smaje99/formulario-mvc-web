@@ -1,4 +1,3 @@
-from datetime import datetime
 from typing import Optional
 
 from pydantic import BaseModel
@@ -9,7 +8,7 @@ class User(BaseModel):
     name: str
     alias: str
     password: str
-    date_birth: datetime
+    date_birth: str
     email: str
     phone: str
     potential: int

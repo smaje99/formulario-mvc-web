@@ -1,25 +1,16 @@
-from fastapi import Depends, FastAPI, HTTPException, status
+from fastapi import FastAPI, HTTPException, status
 from fastapi.staticfiles import StaticFiles
-from sqlalchemy.orm import Session
 
 from model import crud, User
-from model.base import (
-    Base,
-    engine,
-    session_reading,
-    session_writing
-)
 
-
-Base.metadata.create_all(engine)
 
 app = FastAPI()
 
 
-@app.get('/users/{username}', response_model=User)
-def get_user(username: str, session: Session = Depends(session_reading)):
+@app.get('/users/{alias}', response_model=User)
+def get_user(alias: str):
     try:
-        user = crud.get_user(session, username)
+        user = crud.get_user(alias)
     except:
         raise HTTPException(
             status_code=status.HTTP_404_NOT_FOUND,
@@ -30,15 +21,13 @@ def get_user(username: str, session: Session = Depends(session_reading)):
 
 
 @app.post('/users/', response_model=User)
-def create_user(user: User, session: Session = Depends(session_writing)):
-    crud.add_user(session, user)
-    return user
+def create_user(user: User):
+    return crud.add_user(user)
 
 
 @app.put('/users/', response_model=User)
-def update_user(user: User, session: Session = Depends(session_writing)):
-    crud.update_user(session, user)
-    return user
+def update_user(user: User):
+    return crud.update_user(user)
 
 
 app.mount(

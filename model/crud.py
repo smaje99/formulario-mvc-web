@@ -1,21 +1,34 @@
-from sqlalchemy.orm import Session
+from typing import List
 
-from . import models, schemas
-
-
-def get_user(self, session: Session, username: str) -> schemas.User:
-    result = (session.query(models.User)
-        .filter(models.User.username == username)
-        .first())
-    return schemas.User(**dict(result))
+from .schemas import User
 
 
-def add_user(self, session: Session, user: schemas.User):
-    db_user = models.User(**dict(user))
-    session.add(db_user)
+data: List[User] = []
+
+id: int = 0
 
 
-def update_user(self, session: Session, user: schemas.User):
-    (session.query(models.User)
-        .filter(models.User.id == user.id)
-        .update(dict(user)))
+def get_user(alias: str) -> User:
+    user = list(filter(
+        lambda user: user.alias == alias, data))
+
+    if not user: raise Exception("No user found")
+
+    return user[0]
+
+
+def add_user(user: User) -> User:
+    global id
+    id += 1
+    user.id = id
+    data.append(user)
+    return get_user(user.alias)
+
+
+def update_user(user: User) -> User:
+    for user_data in data:
+        if user_data.id == user.id:
+            user_data = user
+            return user
+
+    raise Exception("User not found")
