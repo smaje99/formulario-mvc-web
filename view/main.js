@@ -15,6 +15,20 @@ const getData = () => {
     }
 }
 
+const resetRegister = () => {
+    $('#name').value = '';
+    $('#alias').value = '';
+    $('#password').value = '';
+    $('#birth').value = '';
+    $('#email').value = '';
+    $('#phone').value = '';
+    $('#potential').value = 3;
+    $('#masculino').checked = false;
+    $('#femenino').checked = false;
+    $('#fore').value = '#000000';
+    $('#back').value = '#ffffff';
+}
+
 const registerForm = $('#register');
 
 registerForm.addEventListener('submit', e => {
@@ -28,8 +42,8 @@ registerForm.addEventListener('submit', e => {
         }
     })
         .then(() => alert('Usuario Creado'))
-        .try(() => alert('Usuario no creado'));
-    e.target.reset();
+        .catch(() => alert('Usuario no creado'));
+    resetRegister();
 })
 
 const loginForm = $('#login');
