@@ -1,4 +1,3 @@
-from pydantic import BaseModel
 from sqlalchemy import (
     Column,
     Integer,
@@ -7,10 +6,10 @@ from sqlalchemy import (
     Date
 )
 
-from base import Base
+from .base import Base
 
 
-class User(Base, BaseModel):
+class User(Base):
     __tablename__ = 'user'
 
     id = Column(Integer,
