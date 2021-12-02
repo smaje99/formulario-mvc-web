@@ -1,4 +1,5 @@
 from fastapi import Depends, FastAPI, HTTPException, status
+from fastapi.staticfiles import StaticFiles
 from sqlalchemy.orm import Session
 
 from model import crud, User
@@ -13,6 +14,12 @@ from model.base import (
 Base.metadata.create_all(engine)
 
 app = FastAPI()
+
+app.mount(
+    '/',
+    StaticFiles(directory='view', html=True),
+    name='static'
+)
 
 
 @app.get('/users/{username}', response_model=User)
