@@ -15,6 +15,20 @@ const getData = () => {
     }
 }
 
+const setData = (user) => {
+    $('#name').value = user.name;
+    $('#alias').value = user.alias;
+    $('#password').value = user.password;
+    $('#birth').value = user.date_birth;
+    $('#email').value = user.email;
+    $('#phone').value = user.phone;
+    $('#potential').value = user.potential;
+    $('#masculino').checked = user.sex;
+    $('#femenino').checked = user.sex;
+    $('#fore').value = user.foreground;
+    $('#back').value = user.background;
+}
+
 const resetRegister = () => {
     $('#name').value = '';
     $('#alias').value = '';
@@ -51,6 +65,20 @@ const loginForm = $('#login');
 loginForm.addEventListener('submit', e => {
     e.preventDefault();
     fetch(`/users/${$('#alias-login').value}`)
-        .then(data => data.json())
-        .then(console.log);
+        .then(res => res.json())
+        .then(data => {
+            if (data.password === $('#password-login').value) {
+                setData(data);
+
+                const container = $('.container');
+                container.classList.remove('hidden');
+                container.style.color = data.foreground;
+                container.style.backgroundColor = data.background
+
+                $('.greeting__name').innerText = data.name
+                $('.potential__number').innerText = data.potential
+            } else {
+                alert('Contraseña no valida');
+            }
+        })
 })

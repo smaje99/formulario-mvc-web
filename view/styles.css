@@ -100,3 +100,23 @@ html {
 .form--button {
     padding: .35rem;
 }
+
+.container {
+    width: 50%;
+    border: 1px solid #111;
+    border-radius: 2.5rem;
+    padding: 5rem;
+    margin-top: 5rem;
+}
+
+.greeting {
+    font-size: 18pt;
+}
+
+.potential {
+    font-size: 14pt;
+}
+
+.hidden {
+    visibility: hidden;
+}
