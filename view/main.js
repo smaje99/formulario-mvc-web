@@ -55,11 +55,11 @@ const resetLogin = () => {
 const reset = () => {
     resetRegister();
     resetLogin();
-    container.classList.add('hidden')
+    container.classList.add('hidden');
+    $('#submit').value = 'Registrarme';
 }
 
-registerForm.addEventListener('submit', e => {
-    e.preventDefault();
+const createUser = () => {
     fetch('/users/', {
         method: 'POST',
         body: JSON.stringify(getData()),
@@ -71,6 +71,41 @@ registerForm.addEventListener('submit', e => {
         .then(() => alert('Usuario Creado'))
         .catch(() => alert('Usuario no creado'));
     reset();
+}
+
+const updateUser = () => {
+    const data = getData();
+
+    fetch('/users/', {
+        method: 'PUT',
+        body: JSON.stringify(data),
+        headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json'
+        }
+    })
+        .then(res => res.json())
+        .then(newData => {
+            setData(newData);
+
+            container.style.color = newData.foreground;
+            container.style.backgroundColor = newData.background;
+
+            $('.greeting__name').innerText = newData.name;
+            $('.potential__number').innerText = newData.potential;
+
+            alert('Usuario actualizado')
+        })
+        .catch(() => alert('Usuario no actualizado'))
+}
+
+registerForm.addEventListener('submit', e => {
+    e.preventDefault();
+    if ($('#submit').value === 'Registrarme') {
+        createUser();
+    } else {
+        updateUser();
+    }
 })
 
 registerForm.addEventListener('reset', reset);
