@@ -66,10 +66,11 @@ loginForm.addEventListener('submit', e => {
 
                 container.classList.remove('hidden');
                 container.style.color = data.foreground;
-                container.style.backgroundColor = data.background
+                container.style.backgroundColor = data.background;
 
-                $('.greeting__name').innerText = data.name
-                $('.potential__number').innerText = data.potential
+                $('.greeting__name').innerText = data.name;
+                $('.potential__number').innerText = data.potential;
+                $('#submit').value = 'Actualizar datos';
             } else {
                 alert('Contraseña no valida');
             }
