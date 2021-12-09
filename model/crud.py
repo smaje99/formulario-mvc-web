@@ -28,6 +28,6 @@ def add_user(user: User) -> User:
 
 def update_user(user: User) -> User:
     for user_data in data:
-        if user_data.id == user.id:
+        if user_data.alias == user.alias:
             user_data = user
             return user_data
