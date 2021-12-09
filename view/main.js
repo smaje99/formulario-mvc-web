@@ -29,21 +29,15 @@ const setData = (user) => {
     $('#back').value = user.background;
 }
 
-const resetRegister = () => {
-    $('#name').value = '';
-    $('#alias').value = '';
-    $('#password').value = '';
-    $('#birth').value = '';
-    $('#email').value = '';
-    $('#phone').value = '';
-    $('#potential').value = 3;
-    $('#masculino').checked = false;
-    $('#femenino').checked = false;
-    $('#fore').value = '#000000';
-    $('#back').value = '#ffffff';
-}
-
 const registerForm = $('#register');
+const loginForm = $('#login');
+const container = $('.container');
+
+const reset = () => {
+    registerForm.reset();
+    loginForm.reset();
+    container.classList.add('hidden')
+}
 
 registerForm.addEventListener('submit', e => {
     e.preventDefault();
@@ -57,10 +51,10 @@ registerForm.addEventListener('submit', e => {
     })
         .then(() => alert('Usuario Creado'))
         .catch(() => alert('Usuario no creado'));
-    resetRegister();
+    reset();
 })
 
-const loginForm = $('#login');
+registerForm.addEventListener('reset', reset);
 
 loginForm.addEventListener('submit', e => {
     e.preventDefault();
@@ -70,7 +64,6 @@ loginForm.addEventListener('submit', e => {
             if (data.password === $('#password-login').value) {
                 setData(data);
 
-                const container = $('.container');
                 container.classList.remove('hidden');
                 container.style.color = data.foreground;
                 container.style.backgroundColor = data.background
