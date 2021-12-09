@@ -33,9 +33,28 @@ const registerForm = $('#register');
 const loginForm = $('#login');
 const container = $('.container');
 
+const resetRegister = () => {
+    $('#name').value = '';
+    $('#alias').value = '';
+    $('#password').value = '';
+    $('#birth').value = '';
+    $('#email').value = '';
+    $('#phone').value = '';
+    $('#potential').value = 3;
+    $('#masculino').checked = false;
+    $('#femenino').checked = false;
+    $('#fore').value = '#000000';
+    $('#back').value = '#ffffff';
+}
+
+const resetLogin = () => {
+    $('#alias-login').value = '';
+    $('#password-login').value = ''
+}
+
 const reset = () => {
-    registerForm.reset();
-    loginForm.reset();
+    resetRegister();
+    resetLogin();
     container.classList.add('hidden')
 }
 
