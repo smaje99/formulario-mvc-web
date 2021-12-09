@@ -27,7 +27,7 @@ def add_user(user: User) -> User:
 
 
 def update_user(user: User) -> User:
-    for user_data in data:
+    for i, user_data in enumerate(data):
         if user_data.alias == user.alias:
-            user_data = user
-            return user_data
+            data[i] = user
+            return data[i]
