@@ -24,7 +24,7 @@ const setData = (user) => {
     $('#phone').value = user.phone;
     $('#potential').value = user.potential;
     $('#masculino').checked = user.sex;
-    $('#femenino').checked = user.sex;
+    $('#femenino').checked = !user.sex;
     $('#fore').value = user.foreground;
     $('#back').value = user.background;
 }
